@@ -10,8 +10,18 @@ import { Partners, Brands } from "./components/Partners";
 import { Footer } from "./components/Footer";
 import { Modal } from "./components/Modal";
 
+const CATEGORIES = [
+  "CELULAR",
+  "ACESSÓRIOS",
+  "TABLETS",
+  "NOTEBOOKS",
+  "TVS",
+  "VER TODOS",
+];
+
 export function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("CELULAR");
 
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -42,6 +52,19 @@ export function App() {
       <main className="main-content">
         <section className="showcase">
           <h2 className="section-title">Produtos relacionados</h2>
+
+          {/* BARRA VISUAL DE CATEGORIAS */}
+          <ul className="category-tabs">
+            {CATEGORIES.map((category) => (
+              <li
+                key={category}
+                className={`tab-item ${activeTab === category ? "active" : ""}`}
+                onClick={() => setActiveTab(category)}
+              >
+                {category}
+              </li>
+            ))}
+          </ul>
 
           {isLoading && (
             <p className="status-message">Carregando produtos...</p>
