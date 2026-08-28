@@ -1,16 +1,7 @@
 import "./style.scss";
+import { categories } from "../../assets/img/constants/img";
 
 export function Banner() {
-  const categories = [
-    { name: "Tecnologia", active: true },
-    { name: "Supermercado" },
-    { name: "Bebidas" },
-    { name: "Ferramentas" },
-    { name: "Saúde" },
-    { name: "Esportes e Fitness" },
-    { name: "Moda" },
-  ];
-
   return (
     <>
       <section className="hero-banner">
@@ -29,7 +20,9 @@ export function Banner() {
             key={idx}
             className={`category-card ${cat.active ? "active" : ""}`}
           >
-            <div className="icon-box">💻</div>
+            <div className="icon-box">
+              {cat.img ? <img src={cat.img} alt={cat.name} /> : null}
+            </div>
             <span>{cat.name}</span>
           </div>
         ))}
