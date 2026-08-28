@@ -1,0 +1,84 @@
+.hero-banner {
+  width: 100%;
+  height: 380px;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80")
+      center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding-left: 80px;
+
+  .banner-content {
+    color: #fff;
+    max-width: 450px;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      span {
+        color: #f6c500;
+        font-weight: 700;
+      }
+    }
+
+    button {
+      background-color: #f6c500;
+      color: #041e50;
+      border: none;
+      padding: 14px 48px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
+}
+
+.category-grid {
+  max-width: 1200px;
+  margin: 32px auto;
+  display: flex;
+  justify-content: space-between;
+
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+
+    .icon-box {
+      width: 120px;
+      height: 120px;
+      background: #f4f4f4;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4e4e4e;
+    }
+
+    &.active {
+      .icon-box {
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      span {
+        color: #3442b5;
+      }
+    }
+  }
+}

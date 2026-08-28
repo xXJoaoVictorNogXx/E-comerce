@@ -1,0 +1,73 @@
+.partners-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  gap: 24px;
+
+  .partner-card {
+    flex: 1;
+    height: 280px;
+    border-radius: 12px;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=600&q=80")
+        center/cover;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+
+    h3 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+    button {
+      width: fit-content;
+      background: #f6c500;
+      color: #041e50;
+      border: none;
+      padding: 12px 32px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
+}
+
+.brands-container {
+  max-width: 1200px;
+  margin: 48px auto;
+  text-align: center;
+
+  h2 {
+    font-size: 1.75rem;
+    color: #3442b5;
+    margin-bottom: 32px;
+  }
+
+  .brands-list {
+    display: flex;
+    justify-content: space-between;
+
+    .brand-circle {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        font-weight: 800;
+        color: #f6c500;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
