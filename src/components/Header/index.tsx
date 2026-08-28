@@ -1,6 +1,20 @@
+import { useState } from "react";
 import "./style.scss";
 
 export function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const categories = [
+    { label: "Todas Categorias", active: true },
+    { label: "Tecnologia & Celulares" },
+    { label: "Supermercado" },
+    { label: "Bebidas" },
+    { label: "Ferramentas" },
+    { label: "Saúde & Esportes" },
+    { label: "Ofertas do Dia" },
+    { label: "Lançamentos" },
+  ];
+
   return (
     <header className="main-header">
       <div className="top-bar">
@@ -20,11 +34,15 @@ export function Header() {
           <h2>econverse</h2>
         </div>
 
+        {/* Barra de Busca mantida e ajustada */}
         <div className="search-bar">
           <input type="text" placeholder="O que você está buscando?" />
-          <button type="button">🔍</button>
+          <button type="button" aria-label="Buscar">
+            🔍
+          </button>
         </div>
 
+        {/* Ícones visíveis APENAS no Desktop */}
         <div className="header-actions">
           <button title="Pedidos">📦</button>
           <button title="Favoritos">❤️</button>
@@ -34,15 +52,34 @@ export function Header() {
       </div>
 
       <nav className="header-nav">
-        <ul>
-          <li className="active">TODAS CATEGORIAS</li>
-          <li>SUPERMERCADO</li>
-          <li>LIVROS</li>
-          <li>MODA</li>
-          <li>LANÇAMENTOS</li>
-          <li>OFERTAS DO DIA</li>
-          <li>ASSINATURA</li>
+        {/* Menu Desktop (itens em linha) */}
+        <ul className="desktop-menu">
+          {categories.slice(0, 6).map((cat, index) => (
+            <li key={index} className={cat.active ? "active" : ""}>
+              {cat.label.toUpperCase()}
+            </li>
+          ))}
         </ul>
+
+        {/* Dropdown Mobile (Menu empilhado verticalmente) */}
+        <div className="mobile-menu-wrapper">
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            CATEGORIAS ▾
+          </button>
+
+          {isMobileMenuOpen && (
+            <ul className="mobile-dropdown">
+              {categories.map((cat, index) => (
+                <li key={index} className={cat.active ? "active" : ""}>
+                  {cat.label}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </nav>
     </header>
   );
