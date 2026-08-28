@@ -34,7 +34,6 @@ export function Header() {
           <h2>econverse</h2>
         </div>
 
-        {/* Barra de Busca mantida e ajustada */}
         <div className="search-bar">
           <input type="text" placeholder="O que você está buscando?" />
           <button type="button" aria-label="Buscar">
@@ -42,7 +41,6 @@ export function Header() {
           </button>
         </div>
 
-        {/* Ícones visíveis APENAS no Desktop */}
         <div className="header-actions">
           <button title="Pedidos">📦</button>
           <button title="Favoritos">❤️</button>
@@ -52,7 +50,6 @@ export function Header() {
       </div>
 
       <nav className="header-nav">
-        {/* Menu Desktop (itens em linha) */}
         <ul className="desktop-menu">
           {categories.slice(0, 6).map((cat, index) => (
             <li key={index} className={cat.active ? "active" : ""}>
@@ -61,7 +58,6 @@ export function Header() {
           ))}
         </ul>
 
-        {/* Dropdown Mobile (Menu empilhado verticalmente) */}
         <div className="mobile-menu-wrapper">
           <button
             className="mobile-menu-btn"
