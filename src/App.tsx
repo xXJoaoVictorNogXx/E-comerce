@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "./services/api";
 import type { Product } from "./types/product";
@@ -13,6 +13,8 @@ import { Modal } from "./components/Modal";
 export function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
+  const carouselRef = useRef<HTMLDivElement>(null);
+
   const {
     data: products = [],
     isLoading,
@@ -21,6 +23,16 @@ export function App() {
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
+
+  const handleScroll = (direction: "left" | "right") => {
+    if (carouselRef.current) {
+      const scrollAmount = 300;
+      carouselRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <div className="app-container">
@@ -41,14 +53,32 @@ export function App() {
           )}
 
           {!isLoading && !isError && (
-            <div className="product-grid">
-              {products.map((prod, idx) => (
-                <ProductCard
-                  key={idx}
-                  product={prod}
-                  onOpenModal={setSelectedProduct}
-                />
-              ))}
+            <div className="carousel-wrapper">
+              <button
+                className="carousel-btn prev"
+                onClick={() => handleScroll("left")}
+                aria-label="Anterior"
+              >
+                &#10094;
+              </button>
+
+              <div className="product-carousel" ref={carouselRef}>
+                {products.map((prod, idx) => (
+                  <ProductCard
+                    key={idx}
+                    product={prod}
+                    onOpenModal={setSelectedProduct}
+                  />
+                ))}
+              </div>
+
+              <button
+                className="carousel-btn next"
+                onClick={() => handleScroll("right")}
+                aria-label="Próximo"
+              >
+                &#10095;
+              </button>
             </div>
           )}
         </section>

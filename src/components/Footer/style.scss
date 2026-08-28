@@ -2,6 +2,9 @@
   width: 100%;
   margin-top: 60px;
 
+  // ==========================================================================
+  // NEWSLETTER SECTOR
+  // ==========================================================================
   .newsletter {
     background-color: #2a2251;
     color: #fff;
@@ -9,13 +12,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 24px;
+
+    /* Responsividade para tablets e telas médias */
+    @media (max-width: 900px) {
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 24px;
+    }
 
     .newsletter-content {
       max-width: 400px;
+
       h3 {
         font-size: 1.5rem;
         text-transform: uppercase;
         margin-bottom: 8px;
+
+        @media (max-width: 480px) {
+          font-size: 1.25rem;
+        }
       }
       p {
         font-size: 0.85rem;
@@ -28,6 +44,11 @@
       flex-wrap: wrap;
       gap: 12px;
       max-width: 600px;
+      width: 100%; /* Garante que ocupe o espaço correto ao quebrar linha */
+
+      @media (max-width: 900px) {
+        justify-content: center;
+      }
 
       input[type="text"],
       input[type="email"] {
@@ -36,6 +57,12 @@
         border: none;
         outline: none;
         flex: 1;
+        min-width: 200px; /* Impede que os inputs fiquem minúsculos */
+
+        @media (max-width: 480px) {
+          width: 100%;
+          flex: none; /* Força um input por linha em celulares pequenos */
+        }
       }
 
       button {
@@ -46,6 +73,15 @@
         padding: 12px 24px;
         border-radius: 4px;
         cursor: pointer;
+        transition: opacity 0.2s;
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        @media (max-width: 480px) {
+          width: 100%; /* Botão ocupa a largura total no celular */
+        }
       }
 
       .terms {
@@ -54,19 +90,46 @@
         display: flex;
         align-items: center;
         gap: 8px;
+
+        @media (max-width: 900px) {
+          justify-content: center;
+          text-align: left;
+        }
       }
     }
   }
 
+  // ==========================================================================
+  // FOOTER LINKS COLUMNS
+  // ==========================================================================
   .footer-links {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
     display: flex;
     justify-content: space-between;
+    gap: 32px;
+
+    /* Transição para Grid para organizar as colunas em telas menores */
+    @media (max-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Divide em 2 colunas no tablet */
+      gap: 40px 24px;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr; /* 1 única coluna empilhada no celular */
+      text-align: center;
+    }
 
     .brand-col {
       max-width: 250px;
+
+      @media (max-width: 480px) {
+        max-width: 100%;
+        margin-bottom: 16px;
+      }
+
       h2 {
         color: #f6c500;
         margin-bottom: 12px;
@@ -80,6 +143,10 @@
         font-size: 1.2rem;
         display: flex;
         gap: 12px;
+
+        @media (max-width: 480px) {
+          justify-content: center;
+        }
       }
     }
 
@@ -92,11 +159,18 @@
       }
       ul {
         list-style: none;
+        padding: 0; /* Remove padding padrão do HTML */
+
         li {
           font-size: 0.8rem;
           color: #666;
           margin-bottom: 10px;
           cursor: pointer;
+          transition: color 0.2s;
+
+          &:hover {
+            color: #3442b5; /* Efeito hover opcional para usabilidade */
+          }
         }
       }
     }
